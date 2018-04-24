@@ -22,4 +22,18 @@ export class GlobalWeatherPage {
     console.log('ionViewDidLoad GlobalWeatherPage');
   }
 
+
+  //method that change tab when swip left
+  swipeLeft()
+  {
+    //navigate to historic 
+    this.navCtrl.parent.select(2);
+    console.log("swipe r");
+  }
+
+  swipeRight()
+  {
+    //navigate to Local
+    this.navCtrl.parent.select(0);
+  }
 }

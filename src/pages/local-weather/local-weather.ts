@@ -15,6 +15,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LocalWeatherPage {
 
+ 
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -22,4 +25,11 @@ export class LocalWeatherPage {
     console.log('ionViewDidLoad LocalWeatherPage');
   }
 
+//method that change tab when swip left
+  swipeLeft()
+  {
+    //navigate to global 
+    this.navCtrl.parent.select(1);
+    console.log("swipe r");
+  }
 }

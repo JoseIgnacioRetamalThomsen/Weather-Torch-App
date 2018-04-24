@@ -22,4 +22,10 @@ export class HistoricWeatherPage {
     console.log('ionViewDidLoad HistoricWeatherPage');
   }
 
+  swipeRight()
+  {
+    //navigate to Local
+    this.navCtrl.parent.select(1);
+  }
+  
 }
