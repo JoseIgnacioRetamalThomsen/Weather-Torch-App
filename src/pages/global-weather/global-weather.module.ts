@@ -4,7 +4,8 @@ import { GlobalWeatherPage } from './global-weather';
 
 @NgModule({
   declarations: [
-    GlobalWeatherPage,
+    //removed for deploy
+    //GlobalWeatherPage,
   ],
   imports: [
     IonicPageModule.forChild(GlobalWeatherPage),

@@ -4,7 +4,8 @@ import { HistoricWeatherPage } from './historic-weather';
 
 @NgModule({
   declarations: [
-    HistoricWeatherPage,
+    //rmeoved for deploy
+    //HistoricWeatherPage,
   ],
   imports: [
     IonicPageModule.forChild(HistoricWeatherPage),

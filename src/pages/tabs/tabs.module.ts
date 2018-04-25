@@ -4,7 +4,8 @@ import { TabsPage } from './tabs';
 
 @NgModule({
   declarations: [
-    TabsPage,
+    //removed for deploy
+    //TabsPage,
   ],
   imports: [
     IonicPageModule.forChild(TabsPage),
