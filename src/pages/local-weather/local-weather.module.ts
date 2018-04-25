@@ -4,7 +4,8 @@ import { LocalWeatherPage } from './local-weather';
 
 @NgModule({
   declarations: [
-    LocalWeatherPage,
+    //removed for deploy
+    //LocalWeatherPage,
   ],
   imports: [
     IonicPageModule.forChild(LocalWeatherPage),
