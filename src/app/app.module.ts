@@ -13,8 +13,9 @@ import { GlobalWeatherPage } from '../pages/global-weather/global-weather';
 import {HistoricWeatherPage}  from '../pages/historic-weather/historic-weather';
 
 import {CentralWeatherCardComponent} from'../components/central-weather-card/central-weather-card';
+import { DayWeatherProvider } from '../providers/day-weather/day-weather';
 
-
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import {CentralWeatherCardComponent} from'../components/central-weather-card/cen
   ],
   imports: [
     BrowserModule,
-   
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -47,7 +48,8 @@ import {CentralWeatherCardComponent} from'../components/central-weather-card/cen
     SplashScreen,
     Flashlight,
    
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    DayWeatherProvider
   ]
 })
 export class AppModule {}

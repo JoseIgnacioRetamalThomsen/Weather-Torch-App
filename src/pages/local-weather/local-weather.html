@@ -4,10 +4,10 @@
             <ion-slide>
                 <!--Main part that diplsay day weather-->
   
-                <central-weather-card locationName="Galway,Ireland" temperature="50" weatherDes="mostly cloudy" windSpeed="300" humidity="80"></central-weather-card>
+                <central-weather-card locationName="Galway,Ireland" [temperature]="dayWeather1.temp" [weatherDes]="dayWeather[0].description" windSpeed="300" humidity="80"></central-weather-card>
             </ion-slide>
 
-
+           
         </ion-slides>
     </div>
 

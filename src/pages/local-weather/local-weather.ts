@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
 
+import { DayWeatherProvider } from '../../providers/day-weather/day-weather'
 
 /**
  * Generated class for the LocalWeatherPage page.
@@ -16,22 +20,48 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LocalWeatherPage {
 
+
+  dayWeather: any = ["w"];
+  dayWeather1:any=["w"];
+  test:string;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private dayWeatherProvider: DayWeatherProvider) {
+
  
-
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LocalWeatherPage');
+    this.dayWeatherProvider.getWeather().subscribe(data => {
+
+      this.dayWeather = data.weather;
+      this.dayWeather1 = data.main;
+ 
+    });
+    this.dayWeatherProvider.getWeather().subscribe(data => {
+
+     
+      
+     
+ 
+    });
+
+
+/*
+    console.log("we"+this.dayWeather[0].description);
+    this.test=this.dayWeather[0].description;
+    console.log(this.test);*/
   }
 
-//method that change tab when swip left
-  swipeLeft()
+
+  ngOnChanges()
   {
+    
+  }
+  //method that change tab when swip left
+  swipeLeft() {
     //navigate to global 
     this.navCtrl.parent.select(1);
-    console.log("swipe r");
-  }
+
   
+  }
+
 }

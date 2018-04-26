@@ -41,10 +41,13 @@ export class CentralWeatherCardComponent {
     this.humidity=80;
   }
 
-  ngAfterViewInit()
+  ngOnChanges()
   {
+  
+  
+  
     this.locationName =this.locationNameIn;
-    this.temperature = this.temperatureIn;
+    this.temperature = this.temperatureIn -272.15;
     this.weatherDes=this.weatherDesIn;
    this.windSpeed=this.windSpeedIn;
    this.humidity=this.humidityIn;
