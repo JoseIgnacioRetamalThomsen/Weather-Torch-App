@@ -1,0 +1,29 @@
+central-weather-card {
+   
+.mainDiv
+{
+    text-align: center;
+
+}
+
+.cityTitle
+{
+    color:white;
+    font-size:20px ;
+}
+.temp
+{
+    font-size:50px ;
+    color:white;
+}
+.mainGrid
+{
+    $grid-padding-width:         0px !default;
+    padding: 0px;
+}
+.bottomText
+{
+    color:white;
+}
+
+}

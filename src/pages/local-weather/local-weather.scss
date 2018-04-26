@@ -1,7 +1,11 @@
 page-local-weather {
-
+    .mainContent
+    {
+    background-color: blue;
+    }
     ion-content
     {
         margin-top: 44px;
+      
     }
 }

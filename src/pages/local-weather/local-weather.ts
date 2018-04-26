@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+
 /**
  * Generated class for the LocalWeatherPage page.
  *
@@ -32,4 +33,5 @@ export class LocalWeatherPage {
     this.navCtrl.parent.select(1);
     console.log("swipe r");
   }
+  
 }
