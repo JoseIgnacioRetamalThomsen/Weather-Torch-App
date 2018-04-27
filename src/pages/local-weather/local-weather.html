@@ -1,15 +1,15 @@
-
-<ion-content  padding >
-    <div (swipeleft)="swipeLeft()" >
+<ion-content padding class="mainContent">
+    <div (swipeleft)="swipeLeft()">
         <ion-slides>
             <ion-slide>
-                <h1>test</h1>
-          
-    
+                <!--Main part that diplsay day weather-->
+  
+                <central-weather-card locationName="Galway,Ireland" [temperature]="dayWeather1.temp" [weatherDes]="dayWeather[0].description" windSpeed="300" humidity="80"></central-weather-card>
             </ion-slide>
+
            
-            
-          </ion-slides>
-        </div>
+        </ion-slides>
+    </div>
+
 
 </ion-content>
