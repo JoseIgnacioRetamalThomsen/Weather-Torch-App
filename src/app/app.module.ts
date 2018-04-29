@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { Flashlight } from '@ionic-native/flashlight';
 
+import { IonicStorageModule } from '@ionic/storage' 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TabsPage} from '../pages/tabs/tabs';
@@ -17,6 +19,9 @@ import { DayWeatherProvider } from '../providers/day-weather/day-weather';
 
 import {HttpClientModule} from '@angular/common/http';
 
+import { Geolocation } from '@ionic-native/geolocation';
+import { ConvertTemperatureProvider } from '../providers/convert-temperature/convert-temperature';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -25,13 +30,16 @@ import {HttpClientModule} from '@angular/common/http';
     LocalWeatherPage,
     GlobalWeatherPage,
     HistoricWeatherPage,
-    CentralWeatherCardComponent
+    CentralWeatherCardComponent,
+    
    
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    
+    IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,9 +55,10 @@ import {HttpClientModule} from '@angular/common/http';
     StatusBar,
     SplashScreen,
     Flashlight,
-   
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    DayWeatherProvider
+    DayWeatherProvider,
+    ConvertTemperatureProvider
   ]
 })
 export class AppModule {}

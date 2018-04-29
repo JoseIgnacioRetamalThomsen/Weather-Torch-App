@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { LocalWeatherPage} from '../local-weather/local-weather';
@@ -25,11 +25,14 @@ export class TabsPage {
   tab3Root=HistoricWeatherPage;
 
 
+  @Input('locationName') locationNameIn;
+  locationName:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
+    console.log("here2");
   }
 
 }

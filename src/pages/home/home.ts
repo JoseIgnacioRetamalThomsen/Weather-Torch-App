@@ -37,4 +37,7 @@ export class HomePage {
        });
       
     }
+    ionViewDidEnter() {
+      console.log("here");
+    }
 }

@@ -6,6 +6,14 @@ import { HttpClient } from '@angular/common/http';
 
 import { DayWeatherProvider } from '../../providers/day-weather/day-weather'
 
+import { Geolocation } from '@ionic-native/geolocation';
+
+import { Platform } from 'ionic-angular';
+
+
+import { Events } from 'ionic-angular';
+
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the LocalWeatherPage page.
  *
@@ -21,47 +29,85 @@ import { DayWeatherProvider } from '../../providers/day-weather/day-weather'
 export class LocalWeatherPage {
 
 
-  dayWeather: any = ["w"];
-  dayWeather1:any=["w"];
-  test:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private dayWeatherProvider: DayWeatherProvider) {
+  //current weather variables for read api 
+  currentWeather: any = ["w"];
+  currentMain: any = ["w"];
+  currentName: any = ['w'];
+  currentWind: any = ['w'];
+temperature;
 
- 
+  lat: number = 0;
+  lon: number = 0;
+
+
+  tempType;
+  constructor(private navCtrl: NavController, private navParams: NavParams, private dayWeatherProvider: DayWeatherProvider, private platform: Platform, private geolocation: Geolocation,private events: Events,private storage: Storage) {
+
+//listen for change on setting
+events.subscribe('setting:typeChange', () => {
+  // user and time are the same arguments passed in `events.publish(user, time)`
+  console.log('setting change');
+  this.storage.get("tempType").then((data) => {
+
+    this.tempType=data;
+    //for a bug i need to recall the event for the change to happens.. idk why...
+    this.events.publish('setting:typeChange');
+  }).catch((err) => {
+
+    console.log("erros")
+  });
+
+});
+
   }
-
   ionViewDidLoad() {
-    this.dayWeatherProvider.getWeather().subscribe(data => {
+    //optins for get geoposition
+    var options = {
+      enableHighAccuracy: true,
+      maximumAge: 0
+    };
 
-      this.dayWeather = data.weather;
-      this.dayWeather1 = data.main;
- 
+    //get geoposition
+    this.geolocation.getCurrentPosition(options).then((resp) => {
+      this.lat = resp.coords.latitude;
+      this.lon = resp.coords.longitude;
+
+      //call weather API for current weather
+      this.dayWeatherProvider.getWeather(this.lat, this.lon).subscribe(data => {
+
+        console.log("here");
+        this.currentWind = data.wind;
+        this.currentWeather = data.weather;
+        this.currentMain = data.main;
+        this.currentName = data.name;
+
+        this.temperature=this.currentMain.temp;
+
+      });
+
+    }).catch((error) => {
+      console.log('Error getting location', error);
     });
-    this.dayWeatherProvider.getWeather().subscribe(data => {
-
-     
-      
-     
- 
-    });
-
-
-/*
-    console.log("we"+this.dayWeather[0].description);
-    this.test=this.dayWeather[0].description;
-    console.log(this.test);*/
+   
   }
 
 
-  ngOnChanges()
-  {
+  ngOnChanges() {
     
   }
+
   //method that change tab when swip left
   swipeLeft() {
     //navigate to global 
     this.navCtrl.parent.select(1);
 
-  
-  }
 
+  }
+  ionViewDidEnter() {
+   
+  }
+  sd()
+  {
+    
+  }
 }
