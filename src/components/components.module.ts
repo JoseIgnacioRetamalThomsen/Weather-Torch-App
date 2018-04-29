@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CentralWeatherCardComponent } from './central-weather-card/central-weather-card';
+import { HourWeatherCardComponent } from './hour-weather-card/hour-weather-card';
 @NgModule({
-	declarations: [],//CentralWeatherCardComponent],
+	declarations: [HourWeatherCardComponent],//CentralWeatherCardComponent],
 	imports: [],
-	exports: [],//CentralWeatherCardComponent]
+	exports: [HourWeatherCardComponent],//CentralWeatherCardComponent]
 })
 export class ComponentsModule {}
