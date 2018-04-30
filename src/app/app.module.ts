@@ -16,6 +16,8 @@ import {HistoricWeatherPage}  from '../pages/historic-weather/historic-weather';
 
 import {CentralWeatherCardComponent} from'../components/central-weather-card/central-weather-card';
 import {HourWeatherCardComponent} from '../components/hour-weather-card/hour-weather-card';
+import {DayWeatherCardComponent} from '../components/day-weather-card/day-weather-card'
+
 import { DayWeatherProvider } from '../providers/day-weather/day-weather';
 
 import {HttpClientModule} from '@angular/common/http';
@@ -32,7 +34,8 @@ import { ConvertTemperatureProvider } from '../providers/convert-temperature/con
     GlobalWeatherPage,
     HistoricWeatherPage,
     CentralWeatherCardComponent,
-    HourWeatherCardComponent
+    HourWeatherCardComponent,
+    DayWeatherCardComponent
     
    
   ],
@@ -52,7 +55,8 @@ import { ConvertTemperatureProvider } from '../providers/convert-temperature/con
     GlobalWeatherPage,
     HistoricWeatherPage,
     CentralWeatherCardComponent,
-    HourWeatherCardComponent
+    HourWeatherCardComponent,
+    DayWeatherCardComponent
     ],
   providers: [
     StatusBar,

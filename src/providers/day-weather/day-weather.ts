@@ -34,10 +34,13 @@ export class DayWeatherProvider {
 //https://maps.googleapis.com/maps/api/geocode/json?latlng=51.5033640,-0.1276250&key=AIzaSyA2lJ0i8bXMn1Z3SG8w585KClri8fDvh3o
 //http://api.openweathermap.org/data/2.5/weather?q=ballybaan&APPID=7ec084916acd2a66bb0815cc97102f18
 //http://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&APPID=7ec084916acd2a66bb0815cc97102f18
+//http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&APPID=7ec084916acd2a66bb0815cc97102f18
   }
   getForecast5Days(lat:number,lon:number):Observable<any>{
     let api:string= "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&APPID="+this.API1;
     console.log(api);
     return this.http.get(api);
   }
+
+
 }

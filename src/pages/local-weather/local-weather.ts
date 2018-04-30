@@ -39,9 +39,13 @@ export class LocalWeatherPage {
   lat: number = 0;
   lon: number = 0;
 
-  //5day foracast weather variables
-  list: any = [{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],},{"dt": 1525035600,"main": {"temp": 291.29,},"weather": [{"description": "light rain","icon": "10d"}],}];
+  isDataLoad1 = false;
+  isDataLoad2 = false;
+  isDataLoad = false;
 
+  //5day foracast weather variables
+  list: any;// = [{ "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }];
+forecast:any=[];
 
   tempType;
   constructor(private navCtrl: NavController, private navParams: NavParams, private dayWeatherProvider: DayWeatherProvider, private platform: Platform, private geolocation: Geolocation, private events: Events, private storage: Storage) {
@@ -67,7 +71,7 @@ export class LocalWeatherPage {
 
   }
   ionViewDidLoad() {
-    
+
     //optins for get geoposition
     var options = {
       enableHighAccuracy: true,
@@ -89,13 +93,28 @@ export class LocalWeatherPage {
         this.currentName = data.name;
 
         this.temperature = this.currentMain.temp;
-
+        this.isDataLoad1 = true;
       });
 
       //call APi for 5 day forecast
       this.dayWeatherProvider.getForecast5Days(this.lat, this.lon).subscribe(data => {
         this.list = data.list;
-        console.log("hrt", data.list[0].main.temp);
+        console.log("hrt", data.list[0].weather[0].icon);
+       
+
+        var d:any;
+       
+        for(var i =0;i<40;i++)
+        {
+            d = new Date(this.list[i].dt*1000);
+            if(d.getHours()==13)
+            {
+              this.forecast.push(this.list[i]);
+            }
+          
+            
+        }
+        this.isDataLoad2 = true;
       });
 
     }).catch((error) => {
@@ -107,6 +126,12 @@ export class LocalWeatherPage {
 
 
   ngOnChanges() {
+
+    if (this.isDataLoad1 &&this.isDataLoad2) {
+
+      this.isDataLoad = true;
+
+    }
 
   }
 

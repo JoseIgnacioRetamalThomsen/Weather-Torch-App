@@ -1,17 +1,18 @@
 import { Component,Input, Output, EventEmitter } from '@angular/core';
 import { ConvertTemperatureProvider } from '../../providers/convert-temperature/convert-temperature'
 import { Events } from 'ionic-angular';
+
 /**
- * Generated class for the HourWeatherCardComponent component.
+ * Generated class for the DayWeatherCardComponent component.
  *
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
 @Component({
-  selector: 'hour-weather-card',
-  templateUrl: 'hour-weather-card.html'
+  selector: 'day-weather-card',
+  templateUrl: 'day-weather-card.html'
 })
-export class HourWeatherCardComponent {
+export class DayWeatherCardComponent {
 
   text: string;
   timeAndDate:string;
@@ -31,6 +32,8 @@ export class HourWeatherCardComponent {
   weatherDes: string;
 
 
+
+
   constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events) {
     console.log('Hello HourWeatherCardComponent Component');
     this.text = 'Hello World';
@@ -40,11 +43,11 @@ export class HourWeatherCardComponent {
      //listen for change on setting
      events.subscribe('setting:typeChange', () => {
       // user and time are the same arguments passed in `events.publish(user, time)`
-      
+      console.log("tyi");
 
       this.temperature = this.convertTemperatureProvider.convertTemperature(this.temperatureIn);
       
-    
+      //test
       
     });
   }
@@ -62,9 +65,10 @@ export class HourWeatherCardComponent {
   {
     var finalDate = "";
     var date = new Date(dateUnixP*1000);
-    var hour = date.getHours();
+    var dayNum = date.getDate();
     var day = date.getDay();
 
+    
     switch(day)
     {
       case 0:
@@ -94,16 +98,7 @@ export class HourWeatherCardComponent {
 
       
     }
-    finalDate+= " "+ hour+":00";
+    finalDate+= " "+ dayNum;
     return finalDate;
-  }
-
-  setTempTypeIcon() {
-    if (this.convertTemperatureProvider.getTempType() == 'C') {
-      this.tempTypeIcon = "assets/imgs/foreicons/c.png"
-    }else
-    {
-      this.tempTypeIcon = "assets/imgs/foreicons/f.png"
-    }
   }
 }
