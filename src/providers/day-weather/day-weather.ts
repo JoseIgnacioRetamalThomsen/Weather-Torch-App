@@ -36,11 +36,26 @@ export class DayWeatherProvider {
 //http://api.openweathermap.org/data/2.5/forecast?lat=35&lon=139&APPID=7ec084916acd2a66bb0815cc97102f18
 //http://api.openweathermap.org/data/2.5/forecast/daily?lat=35&lon=139&cnt=10&APPID=7ec084916acd2a66bb0815cc97102f18
   }
+  
   getForecast5Days(lat:number,lon:number):Observable<any>{
     let api:string= "http://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&APPID="+this.API1;
-    console.log(api);
+    
     return this.http.get(api);
   }
 
 
+getForecastByCityName(city:string):Observable<any>
+{
+
+  let api:string ="http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID="+this.API1;
+console.log(api);
+  return this.http.get(api);
+}
+
+getForecast5DaysCityName(city:string):Observable<any>
+{
+  let api:string= "http://api.openweathermap.org/data/2.5/forecast?q="+city+"&APPID="+this.API1;
+  
+  return this.http.get(api);
+}
 }

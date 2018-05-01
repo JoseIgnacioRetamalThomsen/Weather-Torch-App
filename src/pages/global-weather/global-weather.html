@@ -1,20 +1,57 @@
-<ion-content padding >
+<ion-content padding class="mainContent">
   <div (swipeleft)="swipeLeft()" (swiperight)="swipeRight()">
     <ion-slides>
-        <ion-slide>
-            <h1>test</h1>
-      
+      <ion-slide>
+        <div style="width: 100%;float: left;text-align: center;">
+          <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"
+            style="width: 200px;float:left">
+          </ion-searchbar>
 
-        </ion-slide>
-       
-        
-      </ion-slides>
-    </div>
-    
-    <ion-scroll  scrollX="true" style="width: 100%; height: 100px">
-        <div style="width: 500px; height: 50px">
-          <img src="assets/imgs/tm.png"> <img src="assets/imgs/tm.png"> <img src="assets/imgs/tm.png"> 
+          <button ion-button color="light" (click)="searchForCity()">GO</button>
+
+
+
+          <div *ngIf="actualWeatherData">
+
+            <ion-scroll scrollX="true" style="width: 100%; height: 170px">
+              <central-weather-card [locationName]="actualWeather.name" [temperature]="actualWeather.main.temp" [weatherDes]="actualWeather.weather[0].description"
+                [windSpeed]="actualWeather.wind.speed" [humidity]="actualWeather.main.humidity" [icon]="actualWeather.weather[0].icon"></central-weather-card>
+            </ion-scroll>
+
+          </div>
+
         </div>
-        </ion-scroll>
- 
+
+      </ion-slide>
+
+
+    </ion-slides>
+
+  </div>
+  <div *ngIf="isForecastData">
+    <!-- hour forecast   [icon]="currentWeather[0].icon"  icon="01d" -->
+    <ion-scroll scrollX="true" style="width: 100%; height: 170px;">
+      <div style="width: 3700px; height: 120px;float: left;">
+        <span *ngFor="let li of forecastWeather">
+          <hour-weather-card [dateUnix]="li.dt" [temperature]="li.main.temp" [weatherDes]="li.weather[0].description" [icon]="li.weather[0].icon"></hour-weather-card>
+          
+        </span>
+
+      </div>
+
+    </ion-scroll>
+
+    <ion-scroll scrollX="true" style="width: 100%; height: 170px;">
+      <div style="width: 500px; height: 120px;float: left;">
+        <span *ngFor="let li of forecast">
+
+          <day-weather-card [dateUnix]="li.dt" [temperature]="li.main.temp" [weatherDes]="li.weather[0].description" [icon]="li.weather[0].icon"></day-weather-card>
+        </span>
+      </div>
+    </ion-scroll>
+
+  </div>
+  <div *ngIf="notFound">
+    City Not found please try again.
+  </div>
 </ion-content>

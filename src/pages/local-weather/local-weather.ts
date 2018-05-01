@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '@angular/common/http';
 
-import { DayWeatherProvider } from '../../providers/day-weather/day-weather'
+import { DayWeatherProvider } from '../../providers/day-weather/day-weather';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
