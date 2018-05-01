@@ -45,30 +45,32 @@ export class LocalWeatherPage {
 
   //5day foracast weather variables
   list: any;// = [{ "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }];
-forecast:any=[];
+  forecast: any = [];
 
   tempType;
   constructor(private navCtrl: NavController, private navParams: NavParams, private dayWeatherProvider: DayWeatherProvider, private platform: Platform, private geolocation: Geolocation, private events: Events, private storage: Storage) {
 
 
 
-
+/*
     //listen for change on setting
     events.subscribe('setting:typeChange', () => {
       // user and time are the same arguments passed in `events.publish(user, time)`
       console.log('setting change');
+      this.temperature =this.temperature+1;
       this.storage.get("tempType").then((data) => {
 
         this.tempType = data;
+        console.log("event triged")
         //for a bug i need to recall the event for the change to happens.. idk why...
-        this.events.publish('setting:typeChange');
+       // this.events.publish('setting:typeChange');
       }).catch((err) => {
 
         console.log("erros")
       });
 
     });
-
+*/
   }
   ionViewDidLoad() {
 
@@ -99,24 +101,23 @@ forecast:any=[];
       //call APi for 5 day forecast
       this.dayWeatherProvider.getForecast5Days(this.lat, this.lon).subscribe(data => {
         this.list = data.list;
-        console.log("hrt", data.list[0].weather[0].icon);
        
 
-        var d:any;
-       
-        for(var i =0;i<40;i++)
-        {
-            d = new Date(this.list[i].dt*1000);
-            if(d.getHours()==13)
-            {
-              this.forecast.push(this.list[i]);
-            }
-          
-            
+        //create a 5 day forecast, only one for day
+        var d: any;
+
+        for (var i = 0; i < 40; i++) {
+          d = new Date(this.list[i].dt * 1000);
+          if (d.getHours() == 13) {
+            this.forecast.push(this.list[i]);
+          }
         }
+        //set dataload to tru for show in HTML
         this.isDataLoad2 = true;
       });
 
+      //call for show temperature when first load.
+     // this.events.publish('setting:typeChange');
     }).catch((error) => {
       console.log('Error getting location', error);
     });
@@ -127,7 +128,8 @@ forecast:any=[];
 
   ngOnChanges() {
 
-    if (this.isDataLoad1 &&this.isDataLoad2) {
+    console.log("change");
+    if (this.isDataLoad1 && this.isDataLoad2) {
 
       this.isDataLoad = true;
 

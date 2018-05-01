@@ -38,6 +38,7 @@ export class SettingsPage {
     
 
     this.storage.set("tempType", this.tempType);
+    this.changeTempTypeEvent();
     
 
   }//radioButtonClicked() 
@@ -64,15 +65,17 @@ export class SettingsPage {
 
   //event when setting are change
   changeTempTypeEvent() {
-
-    this.events.publish('setting:typeChange');
+  
+    this.events.publish('setting:typeChange',this.tempType);
   }
 
   save() {
     this.storage.set("tempType", this.tempType);
   }
   ionViewDidLeave() {
-    this.changeTempTypeEvent();
-
+  
+    this.storage.get("tempType").then((data) => {
+    console.log("leavin",data);
+    });
   }
 }

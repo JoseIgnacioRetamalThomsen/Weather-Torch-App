@@ -1,6 +1,7 @@
-import { Component,Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ConvertTemperatureProvider } from '../../providers/convert-temperature/convert-temperature'
 import { Events } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the HourWeatherCardComponent component.
  *
@@ -13,97 +14,86 @@ import { Events } from 'ionic-angular';
 })
 export class HourWeatherCardComponent {
 
-  text: string;
-  timeAndDate:string;
-
+  //inputs
   @Input('dateUnix') dateUnixIn;
-  dateUnix:number;
-  dateTitle:String;
-
+  dateUnix: number;
+  dateTitle: String;
   @Input('icon') iconIn;
   icon: string;
   tempTypeIcon: string;
-
   @Input('temperature') temperatureIn;
   temperature: number;
-
   @Input('weatherDes') weatherDesIn;
   weatherDes: string;
 
 
-  constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events) {
-    console.log('Hello HourWeatherCardComponent Component');
-    this.text = 'Hello World';
-    this.timeAndDate="13:00 29/04";
-    this.dateUnix=this.dateUnixIn;
+  constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events, private storage: Storage) {
 
-     //listen for change on setting
-     events.subscribe('setting:typeChange', () => {
-      // user and time are the same arguments passed in `events.publish(user, time)`
-      
+    //listen for change on setting
+    events.subscribe('setting:typeChange', (dataType) => {
 
-      this.temperature = this.convertTemperatureProvider.convertTemperature(this.temperatureIn);
-      
-    
-      
-    });
-  }
+      //change tempearature
+      this.temperature = this.convertTemperatureProvider.convertTemperatureNew(this.temperatureIn, dataType);
 
-  ngOnChanges()
-  {
-    
-    this.dateTitle= this.composeDate(this.dateUnixIn);
+    });//events.subscribe('setting:typeChange', (dataType)
+
+  }//constructor
+
+  ngOnChanges() {
+
+    //read temperature  type from storage then set temp and tempType icon icon
+    this.storage.get("tempType").then((data) => {
+
+      this.temperature = this.convertTemperatureProvider.convertTemperatureNew(this.temperatureIn, data);
+
+    });//this.storage.get("tempType").then((data)
+
+    //set other values
+    this.weatherDes = this.weatherDesIn;
+    this.dateTitle = this.composeDate(this.dateUnixIn);
     this.icon = "assets/imgs/foreicons/" + this.iconIn + ".png";
-    this.temperature =  this.convertTemperatureProvider.convertTemperature(this.temperatureIn);
-    this.weatherDes =  this.weatherDesIn;
-  }
 
-  composeDate(dateUnixP:number):string
-  {
+  }//ngOnChanges()
+
+  //compose data from unix 
+  composeDate(dateUnixP: number): string {
+
     var finalDate = "";
-    var date = new Date(dateUnixP*1000);
+    var date = new Date(dateUnixP * 1000);
     var hour = date.getHours();
     var day = date.getDay();
 
-    switch(day)
-    {
+    switch (day) {
       case 0:
-      finalDate +="Sun";
-      break;
+        finalDate += "Sun";
+        break;
       case 1:
-      finalDate +="Mon";
-      break;
-       case 2:
-      finalDate +="Tue";
-      break;
+        finalDate += "Mon";
+        break;
+      case 2:
+        finalDate += "Tue";
+        break;
       case 3:
-      finalDate +="Wen";
-      break;
+        finalDate += "Wen";
+        break;
       case 4:
-      finalDate +="Thu";
-      break;
+        finalDate += "Thu";
+        break;
       case 5:
-      finalDate +="Fri";
-      break;
+        finalDate += "Fri";
+        break;
       case 6:
-      finalDate +="Sat";
-      break;
+        finalDate += "Sat";
+        break;
       default:
-      finalDate += "?";
-      break;
+        finalDate += "?";
+        break;
 
-      
+
     }
-    finalDate+= " "+ hour+":00";
+    finalDate += " " + hour + ":00";
     return finalDate;
-  }
 
-  setTempTypeIcon() {
-    if (this.convertTemperatureProvider.getTempType() == 'C') {
-      this.tempTypeIcon = "assets/imgs/foreicons/c.png"
-    }else
-    {
-      this.tempTypeIcon = "assets/imgs/foreicons/f.png"
-    }
-  }
+  }//composeDate(dateUnixP: number)
+ 
 }

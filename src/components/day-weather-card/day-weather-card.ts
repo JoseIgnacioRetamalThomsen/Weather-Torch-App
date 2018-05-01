@@ -1,7 +1,7 @@
-import { Component,Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ConvertTemperatureProvider } from '../../providers/convert-temperature/convert-temperature'
 import { Events } from 'ionic-angular';
-
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the DayWeatherCardComponent component.
  *
@@ -14,91 +14,90 @@ import { Events } from 'ionic-angular';
 })
 export class DayWeatherCardComponent {
 
-  text: string;
-  timeAndDate:string;
+ // text: string;
+ // timeAndDate: string;
 
+  //inputs 
   @Input('dateUnix') dateUnixIn;
-  dateUnix:number;
-  dateTitle:String;
-
+  dateUnix: number;
+  dateTitle: String;
   @Input('icon') iconIn;
   icon: string;
   tempTypeIcon: string;
-
   @Input('temperature') temperatureIn;
   temperature: number;
-
   @Input('weatherDes') weatherDesIn;
   weatherDes: string;
 
 
+  constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events, private storage: Storage) {
 
+    //listen for change on setting
+    events.subscribe('setting:typeChange', (dataType) => {
 
-  constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events) {
-    console.log('Hello HourWeatherCardComponent Component');
-    this.text = 'Hello World';
-    this.timeAndDate="13:00 29/04";
-    this.dateUnix=this.dateUnixIn;
+      //change tempearature
+      this.temperature = this.convertTemperatureProvider.convertTemperatureNew(this.temperatureIn, dataType);
 
-     //listen for change on setting
-     events.subscribe('setting:typeChange', () => {
-      // user and time are the same arguments passed in `events.publish(user, time)`
-      console.log("tyi");
+    });//events.subscribe('setting:typeChange', (dataType)
 
-      this.temperature = this.convertTemperatureProvider.convertTemperature(this.temperatureIn);
+  }//constructor
+
+  ngOnChanges() {
+
+      //read temperature  type from storage then set temp and tempType icon icon
+    this.storage.get("tempType").then((data) => {
       
-      //test
-      
-    });
-  }
-
-  ngOnChanges()
-  {
+      this.temperature = this.convertTemperatureProvider.convertTemperatureNew(this.temperatureIn, data);
     
-    this.dateTitle= this.composeDate(this.dateUnixIn);
-    this.icon = "assets/imgs/foreicons/" + this.iconIn + ".png";
-    this.temperature =  this.convertTemperatureProvider.convertTemperature(this.temperatureIn);
-    this.weatherDes =  this.weatherDesIn;
-  }
 
-  composeDate(dateUnixP:number):string
-  {
+    });//this.storage.get("tempType").then((data)
+
+    //set other values
+    this.weatherDes = this.weatherDesIn;
+    this.dateTitle = this.composeDate(this.dateUnixIn);
+    this.icon = "assets/imgs/foreicons/" + this.iconIn + ".png";
+
+  }//ngOnChanges()
+
+  //compose date from unix 
+  composeDate(dateUnixP: number): string {
+
     var finalDate = "";
-    var date = new Date(dateUnixP*1000);
+    var date = new Date(dateUnixP * 1000);
     var dayNum = date.getDate();
     var day = date.getDay();
 
-    
-    switch(day)
-    {
+    switch (day) {
       case 0:
-      finalDate +="Sun";
-      break;
+        finalDate += "Sun";
+        break;
       case 1:
-      finalDate +="Mon";
-      break;
-       case 2:
-      finalDate +="Tue";
-      break;
+        finalDate += "Mon";
+        break;
+      case 2:
+        finalDate += "Tue";
+        break;
       case 3:
-      finalDate +="Wen";
-      break;
+        finalDate += "Wen";
+        break;
       case 4:
-      finalDate +="Thu";
-      break;
+        finalDate += "Thu";
+        break;
       case 5:
-      finalDate +="Fri";
-      break;
+        finalDate += "Fri";
+        break;
       case 6:
-      finalDate +="Sat";
-      break;
+        finalDate += "Sat";
+        break;
       default:
-      finalDate += "?";
-      break;
+        finalDate += "?";
+        break;
 
-      
+
     }
-    finalDate+= " "+ dayNum;
+    finalDate += " " + dayNum;
     return finalDate;
-  }
+
+  }//composeDate(dateUnixP: number)
+
 }

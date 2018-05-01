@@ -49,6 +49,22 @@ export class ConvertTemperatureProvider {
 
   }//convertTemperature
 
+  convertTemperatureNew(temp:number,tempType:string):number
+  {
+   
+      console.log("in prove ",this.tempType)
+    if(tempType=="C")
+    {
+      return Math.round(temp -this.toCelsius);
+    }else
+    if(tempType=="F")
+    {
+      return Math.round((temp - this.toCelsius)*1.8 +32);
+    }
+
+  }//convertTemperature
+
+
   getTempType():string{
     this.storage.get("tempType")
 

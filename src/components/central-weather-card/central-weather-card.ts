@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ConvertTemperatureProvider } from '../../providers/convert-temperature/convert-temperature'
 import { Events } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 /**
  * Componet for show the actual weather big in center
  *
@@ -12,73 +13,66 @@ import { Events } from 'ionic-angular';
   templateUrl: 'central-weather-card.html'
 })
 export class CentralWeatherCardComponent {
-
-  text: string;
-
-  //variable for location name at top
+  
+  //inputs
   @Input('locationName') locationNameIn;
   locationName: string;
-
-  //variable for description
   @Input('weatherDes') weatherDesIn;
   weatherDes: string;
-
   @Input('temperature') temperatureIn;
   temperature: number;
-
   @Input('windSpeed') windSpeedIn;
   windSpeed: number;
-
   @Input('humidity') humidityIn;
   humidity: number;
-
   @Input('icon') iconIn;
   icon: string;
 
   tempTypeIcon: string;
 
-  constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events) {
-    console.log('Hello CentralWeatherCardComponent Component');
-    this.text = 'Hello World';
-    this.locationName = "ttt";
-    this.temperature = 50;
-    this.weatherDes = "mostlye cloudy.";
-    this.windSpeed = 300;
-    this.humidity = 80;
-    this.icon = "assets/imgs/foreicons/";
-    this.setTempTypeIcon();
+  constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events, private storage: Storage) {
+
     //listen for change on setting
-    events.subscribe('setting:typeChange', () => {
-      // user and time are the same arguments passed in `events.publish(user, time)`
-      console.log("tyi");
+    events.subscribe('setting:typeChange', (dataType) => {
 
-      this.temperature = this.convertTemperatureProvider.convertTemperature(this.temperatureIn);
-      this.setTempTypeIcon();
-    });
+      //change tempearature
+      this.temperature = this.convertTemperatureProvider.convertTemperatureNew(this.temperatureIn, dataType);
+      //change icon
+      if (dataType == 'C') {
+        this.tempTypeIcon = "assets/imgs/foreicons/c.png"
+      } else {
+        this.tempTypeIcon = "assets/imgs/foreicons/f.png"
+      }
 
-  }
+    });// events.subscribe('setting:typeChange', (dataType)
+
+  }//constructor
 
   ngOnChanges() {
 
-
-    //assets/imgs/foreicons/02d.png
+    //set location name
     this.locationName = this.locationNameIn;
 
-    //convert and set temperature
-    this.temperature = this.convertTemperatureProvider.convertTemperature(this.temperatureIn);
+    //read temperature  type from storage then set temp and tempType icon icon
+    this.storage.get("tempType").then((data) => {
+      
+      this.temperature = this.convertTemperatureProvider.convertTemperatureNew(this.temperatureIn, data);
 
+      if (data == 'C') {
+        this.tempTypeIcon = "assets/imgs/foreicons/c.png"
+      } else {
+        this.tempTypeIcon = "assets/imgs/foreicons/f.png"
+      }
+
+    });//this.storage.get("tempType").then((data)
+
+    //set others
     this.weatherDes = this.weatherDesIn;
     this.windSpeed = this.windSpeedIn;
     this.humidity = this.humidityIn;
     this.icon = "assets/imgs/foreicons/" + this.iconIn + ".png";
-    this.setTempTypeIcon();
-  }
-  setTempTypeIcon() {
-    if (this.convertTemperatureProvider.getTempType() == 'C') {
-      this.tempTypeIcon = "assets/imgs/foreicons/c.png"
-    }else
-    {
-      this.tempTypeIcon = "assets/imgs/foreicons/f.png"
-    }
-  }
-}
+
+  }// ngOnChanges()
+
+
+}//CentralWeatherCardComponent
