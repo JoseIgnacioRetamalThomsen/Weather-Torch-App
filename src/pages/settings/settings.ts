@@ -20,26 +20,19 @@ import { Events } from 'ionic-angular';
 
 export class SettingsPage {
 
-
-
+  //hold type of temperature "C" or "F"
   tempType;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, private storage: Storage, private events: Events) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingsPage');
-  }
-
-
+  constructor(private navCtrl: NavController, private navParams: NavParams, private storage: Storage, private events: Events) { }
+ 
 
   radioButtonClicked() {
 
-    
-
+    //save type select to storage
     this.storage.set("tempType", this.tempType);
+
+    //trigger event to change temp type
     this.changeTempTypeEvent();
-    
 
   }//radioButtonClicked() 
 
@@ -53,29 +46,19 @@ export class SettingsPage {
     }).catch((err) => {
 
       console.log("erros")
-    });
 
+    });
 
   }//ionViewWillEnter() 
 
-  setStorage(st: string) {
-    this.storage.set("tempType", st);
-  }
+  
 
 
   //event when setting are change
   changeTempTypeEvent() {
-  
-    this.events.publish('setting:typeChange',this.tempType);
-  }
 
-  save() {
-    this.storage.set("tempType", this.tempType);
-  }
-  ionViewDidLeave() {
-  
-    this.storage.get("tempType").then((data) => {
-    console.log("leavin",data);
-    });
-  }
-}
+    this.events.publish('setting:typeChange', this.tempType);
+
+  }//changeTempTypeEvent()
+
+}//SettingsPage

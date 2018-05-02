@@ -2,13 +2,21 @@
   <div (swipeleft)="swipeLeft()" (swiperight)="swipeRight()">
     <ion-slides>
       <ion-slide>
-        <div style="width: 100%;float: left;text-align: center;">
-          <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"
-            style="width: 200px;float:left">
-          </ion-searchbar>
+        <div style="width: 100%;text-align: center;">
 
-          <button ion-button color="light" (click)="searchForCity()">GO</button>
+          <div style="width: 320px;float: left;text-align: center;">
 
+            <div style="width: 240px;float: left;">
+              <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" (ionInput)="onInput($event)" (ionCancel)="onCancel($event)"
+                style="width: 100%;float:left;height:44px;">
+              </ion-searchbar>
+            </div>
+
+
+            <div style="width: 80px;float: left;">
+            <button ion-button color="light" (click)="searchForCity()" style="width: 80px;height:39px;float: left;padding: 0px;margin:2px 0px 2px 0px">GO</button>
+          </div>
+          </div>
 
 
           <div *ngIf="actualWeatherData">
@@ -34,7 +42,7 @@
       <div style="width: 3700px; height: 120px;float: left;">
         <span *ngFor="let li of forecastWeather">
           <hour-weather-card [dateUnix]="li.dt" [temperature]="li.main.temp" [weatherDes]="li.weather[0].description" [icon]="li.weather[0].icon"></hour-weather-card>
-          
+
         </span>
 
       </div>
