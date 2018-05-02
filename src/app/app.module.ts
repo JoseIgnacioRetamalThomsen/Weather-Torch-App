@@ -12,7 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage} from '../pages/tabs/tabs';
 import { LocalWeatherPage} from '../pages/local-weather/local-weather';
 import { GlobalWeatherPage } from '../pages/global-weather/global-weather';
-import {HistoricWeatherPage}  from '../pages/historic-weather/historic-weather';
+
 
 import {CentralWeatherCardComponent} from'../components/central-weather-card/central-weather-card';
 import {HourWeatherCardComponent} from '../components/hour-weather-card/hour-weather-card';
@@ -32,7 +32,7 @@ import { ConvertTemperatureProvider } from '../providers/convert-temperature/con
     TabsPage,
     LocalWeatherPage,
     GlobalWeatherPage,
-    HistoricWeatherPage,
+  
     CentralWeatherCardComponent,
     HourWeatherCardComponent,
     DayWeatherCardComponent
@@ -53,7 +53,7 @@ import { ConvertTemperatureProvider } from '../providers/convert-temperature/con
     TabsPage,
     LocalWeatherPage,
     GlobalWeatherPage,
-    HistoricWeatherPage,
+ 
     CentralWeatherCardComponent,
     HourWeatherCardComponent,
     DayWeatherCardComponent

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { DayWeatherProvider } from '../../providers/day-weather/day-weather';
 /**
  * Generated class for the GlobalWeatherPage page.
@@ -31,7 +31,7 @@ export class GlobalWeatherPage {
   shouldShowCancel = false;
 
   notFound=false;
-  constructor(private navCtrl: NavController, private navParams: NavParams, private dayWeatherProvider: DayWeatherProvider) {
+  constructor(private navCtrl: NavController, private dayWeatherProvider: DayWeatherProvider) {
   }
 
   ionViewDidLoad() {
@@ -39,12 +39,7 @@ export class GlobalWeatherPage {
   }
 
 
-  //method that change tab when swip left
-  swipeLeft() {
-    //navigate to historic 
-    this.navCtrl.parent.select(2);
-    console.log("swipe r");
-  }
+  
 
   swipeRight() {
     //navigate to Local

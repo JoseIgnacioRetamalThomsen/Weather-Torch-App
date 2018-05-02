@@ -2,9 +2,11 @@ page-global-weather {
     ion-content
     {
         margin-top: 44px;
+        background-color: blue;
     }
     .mainContent
     {
-    background-color: blue;
+    background-color: lightblue;
+    background-image: url('../assets/imgs/skybackground.png');
     }
 }

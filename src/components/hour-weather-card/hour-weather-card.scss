@@ -2,9 +2,12 @@ hour-weather-card {
 .mainDiv
 {
     width:90px;
+   
     float:left;
     text-align: center;
     padding-left: 5px;
+   border-right: 2px solid rgba(0, 0, 0, .05);
+   height:120px;
 }
 .normalText
 {

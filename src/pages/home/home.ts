@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Platform } from 'ionic-angular';
 import { Flashlight } from '@ionic-native/flashlight';
 
-import { LocalWeatherPage} from '../local-weather/local-weather';
+import { LocalWeatherPage } from '../local-weather/local-weather';
 
 @Component({
   selector: 'page-home',
@@ -12,32 +12,36 @@ import { LocalWeatherPage} from '../local-weather/local-weather';
 export class HomePage {
 
   //main title of the app
-  appTittle:string = "Weather Torch";
+  appTittle: string = "Weather Torch";
 
-  tab1Root = LocalWeatherPage;
+  bulbColor: string = "";
 
-  constructor(public navCtrl: NavController,private flashlight: Flashlight,private platform: Platform) {
+  constructor(public navCtrl: NavController, private flashlight: Flashlight, private platform: Platform) { }
 
+
+
+  //navigate to settings
+  openSettings() {
+    //load Setting Page using lazy loading
+    this.navCtrl.push("SettingsPage");
   }
 
+  toggleLight() {
 
-    //navigate to settings
-    openSettings() {
-      //load Setting Page using lazy loading
-      this.navCtrl.push("SettingsPage");//, { data1int: 25 });
-    }
+    //wait for plataform to be ready for toggle the flashlight
+    this.platform.ready().then(() => {
 
-    lightOn()
-    {
-     
-      this.platform.ready().then(() => {
-        this.flashlight.toggle();
-        var check = this.flashlight.isSwitchedOn();
-      
-       });
-      
-    }
-    ionViewDidEnter() {
-      console.log("here");
-    }
+      this.flashlight.toggle();
+
+      //if light is turn on will make the icon yellow and normal color if is off
+      //please note taht this do not work well in the browser but work fine in a phone.
+      if (this.flashlight.isSwitchedOn())
+        this.bulbColor = "turnedOn";
+      else
+        this.bulbColor = "";
+
+    });
+
+  }//toggleLight
+
 }

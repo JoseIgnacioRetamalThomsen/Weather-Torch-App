@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Observable } from 'rxjs';
+import { IonicPage, NavController} from 'ionic-angular';
+
 import 'rxjs/add/operator/map';
-import { HttpClient } from '@angular/common/http';
+
 
 import { DayWeatherProvider } from '../../providers/day-weather/day-weather';
 
 import { Geolocation } from '@ionic-native/geolocation';
 
-import { Platform } from 'ionic-angular';
 
 
-import { Events } from 'ionic-angular';
 
-import { Storage } from '@ionic/storage';
+
 /**
  * Generated class for the LocalWeatherPage page.
  *
@@ -44,34 +42,12 @@ export class LocalWeatherPage {
   isDataLoad = false;
 
   //5day foracast weather variables
-  list: any;// = [{ "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }, { "dt": 1525035600, "main": { "temp": 291.29, }, "weather": [{ "description": "light rain", "icon": "10d" }], }];
+  list: any; 
   forecast: any = [];
 
   tempType;
-  constructor(private navCtrl: NavController, private navParams: NavParams, private dayWeatherProvider: DayWeatherProvider, private platform: Platform, private geolocation: Geolocation, private events: Events, private storage: Storage) {
+  constructor(private navCtrl: NavController, private dayWeatherProvider: DayWeatherProvider, private geolocation: Geolocation) {}
 
-
-
-/*
-    //listen for change on setting
-    events.subscribe('setting:typeChange', () => {
-      // user and time are the same arguments passed in `events.publish(user, time)`
-      console.log('setting change');
-      this.temperature =this.temperature+1;
-      this.storage.get("tempType").then((data) => {
-
-        this.tempType = data;
-        console.log("event triged")
-        //for a bug i need to recall the event for the change to happens.. idk why...
-       // this.events.publish('setting:typeChange');
-      }).catch((err) => {
-
-        console.log("erros")
-      });
-
-    });
-*/
-  }
   ionViewDidLoad() {
 
     //optins for get geoposition
