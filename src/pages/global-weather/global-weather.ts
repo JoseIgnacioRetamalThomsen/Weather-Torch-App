@@ -71,11 +71,9 @@ export class GlobalWeatherPage {
       var d: any;
 
       //set the array to blank 
-    //  this.forecast=[];
-
-      while( this.forecast.length  > 0) {
+          while( this.forecast.length  > 0) 
         this.forecast.pop();
-    }
+    
       for (var i = 0; i < this.forecastWeather.length; i++) {
         d = new Date(this.forecastWeather[i].dt * 1000);
         if (d.getHours() == 13) {
