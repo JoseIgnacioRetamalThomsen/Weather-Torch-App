@@ -64,7 +64,7 @@ export class LocalWeatherPage {
       //call weather API for current weather
       this.dayWeatherProvider.getWeather(this.lat, this.lon).subscribe(data => {
 
-        console.log("here");
+       
         this.currentWind = data.wind;
         this.currentWeather = data.weather;
         this.currentMain = data.main;
@@ -76,13 +76,14 @@ export class LocalWeatherPage {
 
       //call APi for 5 day forecast
       this.dayWeatherProvider.getForecast5Days(this.lat, this.lon).subscribe(data => {
+        
         this.list = data.list;
        
 
         //create a 5 day forecast, only one for day
         var d: any;
 
-        for (var i = 0; i < 40; i++) {
+        for (var i = 0; i < this.list.length; i++) {
           d = new Date(this.list[i].dt * 1000);
           if (d.getHours() == 13) {
             this.forecast.push(this.list[i]);

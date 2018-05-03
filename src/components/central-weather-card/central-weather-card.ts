@@ -3,17 +3,20 @@ import { ConvertTemperatureProvider } from '../../providers/convert-temperature/
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 /**
- * Componet for show the actual weather big in center
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * Central weather card, shows the weather at the front,
+ * name of the city, icon, temperature, C Or F ..
+ * 
+ * Jose Retamal
+ *  
  */
+
 @Component({
   selector: 'central-weather-card',
   templateUrl: 'central-weather-card.html'
 })
+
 export class CentralWeatherCardComponent {
-  
+
   //inputs
   @Input('locationName') locationNameIn;
   locationName: string;
@@ -28,6 +31,7 @@ export class CentralWeatherCardComponent {
   @Input('icon') iconIn;
   icon: string;
 
+  //"C" or "F"
   tempTypeIcon: string;
 
   constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events, private storage: Storage) {
@@ -37,12 +41,13 @@ export class CentralWeatherCardComponent {
 
       //change tempearature
       this.temperature = this.convertTemperatureProvider.convertTemperatureNew(this.temperatureIn, dataType);
+
       //change icon
-      if (dataType == 'C') {
+      if (dataType == 'C')
         this.tempTypeIcon = "assets/imgs/foreicons/c.png"
-      } else {
+      else
         this.tempTypeIcon = "assets/imgs/foreicons/f.png"
-      }
+
 
     });// events.subscribe('setting:typeChange', (dataType)
 
@@ -55,14 +60,14 @@ export class CentralWeatherCardComponent {
 
     //read temperature  type from storage then set temp and tempType icon icon
     this.storage.get("tempType").then((data) => {
-      
+
       this.temperature = this.convertTemperatureProvider.convertTemperatureNew(this.temperatureIn, data);
 
-      if (data == 'C') {
+      if (data == 'C')
         this.tempTypeIcon = "assets/imgs/foreicons/c.png"
-      } else {
+      else
         this.tempTypeIcon = "assets/imgs/foreicons/f.png"
-      }
+
 
     });//this.storage.get("tempType").then((data)
 
@@ -70,9 +75,10 @@ export class CentralWeatherCardComponent {
     this.weatherDes = this.weatherDesIn;
     this.windSpeed = this.windSpeedIn;
     this.humidity = this.humidityIn;
+    
+    //compose icon from input in card
     this.icon = "assets/imgs/foreicons/" + this.iconIn + ".png";
 
   }// ngOnChanges()
-
 
 }//CentralWeatherCardComponent

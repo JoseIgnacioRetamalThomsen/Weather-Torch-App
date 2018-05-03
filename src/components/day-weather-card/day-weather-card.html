@@ -1,15 +1,29 @@
-<!-- Generated template for the DayWeatherCardComponent component -->
-<div class="mainDiv"  >
-  <div class="normalText">
-  {{dateTitle}}
-  </div>
-  <div>
-          <img [src]="icon" style="width: 40px; height: auto;padding-top: 0px">
-  </div>
-  <div class="temperatureText">
-          {{temperature}}
-  </div>
-  <div class="normalText">
-          {{weatherDes}}
-  </div>
-  </div>
+<!-- DAy weather all values show line by line -->
+<div class="mainDiv">
+
+        <!-- title -->
+        <div class="normalText">
+
+                {{dateTitle}}
+
+        </div>
+
+        <!-- icon -->
+        <div>
+                <img [src]="icon" style="width: 40px; height: auto;padding-top: 0px">
+        </div>
+        <!-- temperature -->
+        <div class="temperatureText">
+
+                {{temperature}}
+
+        </div>
+
+        <!-- description -->
+        <div class="normalText">
+
+                {{weatherDes}}
+
+        </div>
+
+</div>

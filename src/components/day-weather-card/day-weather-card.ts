@@ -3,21 +3,20 @@ import { ConvertTemperatureProvider } from '../../providers/convert-temperature/
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 /**
- * Generated class for the DayWeatherCardComponent component.
+ *  DAy weahter card, display day weather with a title of the day and date
+ * use for display weather for each day
  *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * Jose Retamal
+ * 
  */
+
 @Component({
   selector: 'day-weather-card',
   templateUrl: 'day-weather-card.html'
 })
 export class DayWeatherCardComponent {
 
- // text: string;
- // timeAndDate: string;
-
-  //inputs 
+   //inputs 
   @Input('dateUnix') dateUnixIn;
   dateUnix: number;
   dateTitle: String;
@@ -93,11 +92,12 @@ export class DayWeatherCardComponent {
         finalDate += "?";
         break;
 
-
     }
+
     finalDate += " " + dayNum;
+
     return finalDate;
 
   }//composeDate(dateUnixP: number)
 
-}
+}//DayWeatherCardComponent

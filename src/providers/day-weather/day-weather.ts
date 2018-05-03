@@ -32,6 +32,7 @@ export class DayWeatherProvider {
     //compose http adress for request
     let api: string = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&APPID=" + this.keyAPI;
 
+
     return this.http.get(api);
 
   }//getForecast5Days

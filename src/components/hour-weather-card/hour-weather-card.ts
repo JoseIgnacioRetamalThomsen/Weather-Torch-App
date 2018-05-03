@@ -3,15 +3,17 @@ import { ConvertTemperatureProvider } from '../../providers/convert-temperature/
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 /**
- * Generated class for the HourWeatherCardComponent component.
+ *  Hour weahter card, display day weather with a title of the day and time
+ * use for display day weather every 3 hours
  *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
+ * Jose Retamal
+ * 
  */
 @Component({
   selector: 'hour-weather-card',
   templateUrl: 'hour-weather-card.html'
 })
+
 export class HourWeatherCardComponent {
 
   //inputs
@@ -25,7 +27,6 @@ export class HourWeatherCardComponent {
   temperature: number;
   @Input('weatherDes') weatherDesIn;
   weatherDes: string;
-
 
   constructor(private convertTemperatureProvider: ConvertTemperatureProvider, private events: Events, private storage: Storage) {
 
@@ -89,11 +90,12 @@ export class HourWeatherCardComponent {
         finalDate += "?";
         break;
 
-
     }
+
     finalDate += " " + hour + ":00";
+
     return finalDate;
 
   }//composeDate(dateUnixP: number)
- 
-}
+
+}//HourWeatherCardComponent

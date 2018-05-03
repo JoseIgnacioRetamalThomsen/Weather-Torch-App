@@ -5,10 +5,9 @@ import {GlobalWeatherPage} from'../global-weather/global-weather';
 
 
 /**
- * Generated class for the TabsPage page.
+ * Tabs page , 2 tabs one for Local wather and another for global
  *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ *  Jose Retamal
  */
 
 @IonicPage()
@@ -22,16 +21,9 @@ export class TabsPage {
   tab1Root = LocalWeatherPage;
   tab2Root=GlobalWeatherPage;
  
-
-
   @Input('locationName') locationNameIn;
   locationName:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
-  ionViewDidLoad() {
-    console.log("here2");
-  }
-
-}
+}//TabsPage

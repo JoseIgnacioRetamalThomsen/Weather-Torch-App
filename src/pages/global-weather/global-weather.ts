@@ -76,7 +76,7 @@ export class GlobalWeatherPage {
       while( this.forecast.length  > 0) {
         this.forecast.pop();
     }
-      for (var i = 0; i < 40; i++) {
+      for (var i = 0; i < this.forecastWeather.length; i++) {
         d = new Date(this.forecastWeather[i].dt * 1000);
         if (d.getHours() == 13) {
           this.forecast.push(this.forecastWeather[i]);
