@@ -56,7 +56,7 @@ export class HourWeatherCardComponent {
 
   }//ngOnChanges()
 
-  //compose data from unix 
+  //compose date from unix 
   composeDate(dateUnixP: number): string {
 
     var finalDate = "";

@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController } from 'ionic-angular';
 import { DayWeatherProvider } from '../../providers/day-weather/day-weather';
 /**
- * Generated class for the GlobalWeatherPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Global weather page
+ *Weather can be search for any city
+ * 
+ * Jose Retamal
  */
 
 @IonicPage()
@@ -16,53 +16,51 @@ import { DayWeatherProvider } from '../../providers/day-weather/day-weather';
 export class GlobalWeatherPage {
 
 
+  //input in search bar
   myInput: any;
 
+  //variables for read weather api
   actualWeather: any = [];
-
-  actualWeatherData = false;
-
   forecastWeather: any[];
-
-  isForecastData = false;
-
   forecast: any = [];
 
+  //for check if data is load and show api
+  actualWeatherData = false;
+  isForecastData = false;
   shouldShowCancel = false;
 
-  notFound=false;
-  constructor(private navCtrl: NavController, private dayWeatherProvider: DayWeatherProvider) {
-  }
+  notFound = false;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad GlobalWeatherPage');
-  }
+  constructor(private navCtrl: NavController, private dayWeatherProvider: DayWeatherProvider) {}
 
-
-  
-
+  //call on swipeRigh event
   swipeRight() {
+
     //navigate to Local
     this.navCtrl.parent.select(0);
+
   }
 
-  onInput() {
-    console.log(this.myInput);
-  }
-
+//seach for the city, using the string my input
   searchForCity() {
+
+    //get actual weather
     this.dayWeatherProvider.getForecastByCityName(this.myInput).subscribe(data => {
 
       this.actualWeather = data;
       this.actualWeatherData = true;
 
-      if(data.cod!=200)
-      {
-        this.notFound =true;
-        this.actualWeatherData = false;
-      }
-    });
+      //check if data is good
+      if (data.cod != 200) {
 
+        this.notFound = true;
+        this.actualWeatherData = false;
+
+      }
+
+    });//this.dayWeatherProvider.getForecastByCityName(this.myInput).subscribe(data 
+
+    //get 5 days forecast
     this.dayWeatherProvider.getForecast5DaysCityName(this.myInput).subscribe(data => {
 
       this.forecastWeather = data.list;
@@ -71,9 +69,9 @@ export class GlobalWeatherPage {
       var d: any;
 
       //set the array to blank 
-          while( this.forecast.length  > 0) 
+      while (this.forecast.length > 0)
         this.forecast.pop();
-    
+
       for (var i = 0; i < this.forecastWeather.length; i++) {
         d = new Date(this.forecastWeather[i].dt * 1000);
         if (d.getHours() == 13) {
@@ -82,7 +80,16 @@ export class GlobalWeatherPage {
       }
 
       this.isForecastData = true;
-    });
+
+    });//this.dayWeatherProvider.getForecast5DaysCityName(this.myInput).subscribe(data 
+
+  }//searchForCity
+
+  //triged when input change do nothig for the moment
+  onInput()
+  {
+
   }
-}
+
+}//GlobalWeatherPage
 

@@ -11,21 +11,20 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = HomePage;
+  rootPage: any = HomePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private storage: Storage) {
-//read type when view enter
-this.storage.get("tempType").then((data) => {
+    //Set temperature type to C if is null
+    this.storage.get("tempType").then((data) => {
 
-console.log("this",data);
-if(data==null)
-this.storage.set("tempType", "C");
-console.log("this",data);
-}).catch((err) => {
+      if (data == null)
+        this.storage.set("tempType", "C");
 
-  console.log("erros")
+    }).catch((err) => {
 
-});
+      console.log("erros")
+
+    });
 
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

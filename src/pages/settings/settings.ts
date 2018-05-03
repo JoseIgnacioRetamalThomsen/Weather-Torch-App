@@ -31,7 +31,7 @@ export class SettingsPage {
     //save type select to storage
     this.storage.set("tempType", this.tempType);
 
-    //trigger event to change temp type
+    //call method that triger event for change temperature conversion type
     this.changeTempTypeEvent();
 
   }//radioButtonClicked() 
@@ -50,13 +50,11 @@ export class SettingsPage {
     });
 
   }//ionViewWillEnter() 
-
   
-
-
   //event when setting are change
   changeTempTypeEvent() {
 
+    //trigged event and send temperature type (C or F ) as parameter
     this.events.publish('setting:typeChange', this.tempType);
 
   }//changeTempTypeEvent()

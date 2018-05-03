@@ -5,9 +5,9 @@ import { Flashlight } from '@ionic-native/flashlight';
 import { LocalWeatherPage } from '../local-weather/local-weather';
 
 /*
-  Homa page, flashlight hapens here 
-
-  Jose Retamal
+ * Homa page, flashlight hapens here 
+ *
+ * Jose Retamal
 */
 @Component({
   selector: 'page-home',

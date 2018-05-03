@@ -1,22 +1,16 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController} from 'ionic-angular';
-
 import 'rxjs/add/operator/map';
-
-
 import { DayWeatherProvider } from '../../providers/day-weather/day-weather';
-
 import { Geolocation } from '@ionic-native/geolocation';
 
 
 
-
-
 /**
- * Generated class for the LocalWeatherPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
+ * Local weather page
+ * Weather for location using geolocating cordova native plugin
+ * 
+ * Jose Retamal
  */
 
 @IonicPage()
@@ -28,15 +22,17 @@ export class LocalWeatherPage {
 
 
   //current weather variables for read api 
-  currentWeather: any = ["w"];
-  currentMain: any = ["w"];
-  currentName: any = ['w'];
-  currentWind: any = ['w'];
+  currentWeather: any = [];
+  currentMain: any = [];
+  currentName: any = [];
+  currentWind: any = [];
   temperature;
 
+  //geolocation variables
   lat: number = 0;
   lon: number = 0;
 
+  //for konw when data is loaded
   isDataLoad1 = false;
   isDataLoad2 = false;
   isDataLoad = false;
@@ -45,7 +41,9 @@ export class LocalWeatherPage {
   list: any; 
   forecast: any = [];
 
+  //C or F
   tempType;
+
   constructor(private navCtrl: NavController, private dayWeatherProvider: DayWeatherProvider, private geolocation: Geolocation) {}
 
   ionViewDidLoad() {
@@ -58,13 +56,15 @@ export class LocalWeatherPage {
 
     //get geoposition
     this.geolocation.getCurrentPosition(options).then((resp) => {
+
+      //get lat and lon
       this.lat = resp.coords.latitude;
       this.lon = resp.coords.longitude;
 
       //call weather API for current weather
       this.dayWeatherProvider.getWeather(this.lat, this.lon).subscribe(data => {
 
-       
+       //set variables
         this.currentWind = data.wind;
         this.currentWeather = data.weather;
         this.currentMain = data.main;
@@ -72,7 +72,8 @@ export class LocalWeatherPage {
 
         this.temperature = this.currentMain.temp;
         this.isDataLoad1 = true;
-      });
+
+      });//this.dayWeatherProvider.getWeather(this.lat, this.lon).subscribe(data
 
       //call APi for 5 day forecast
       this.dayWeatherProvider.getForecast5Days(this.lat, this.lon).subscribe(data => {
@@ -91,40 +92,25 @@ export class LocalWeatherPage {
         }
         //set dataload to tru for show in HTML
         this.isDataLoad2 = true;
-      });
 
-      //call for show temperature when first load.
-     // this.events.publish('setting:typeChange');
+      });//this.dayWeatherProvider.getForecast5Days(this.lat, this.lon).subscribe(dat
+
+     
     }).catch((error) => {
+
       console.log('Error getting location', error);
+
     });
 
 
   }
 
-
-  ngOnChanges() {
-
-    console.log("change");
-    if (this.isDataLoad1 && this.isDataLoad2) {
-
-      this.isDataLoad = true;
-
-    }
-
-  }
-
   //method that change tab when swip left
   swipeLeft() {
+
     //navigate to global 
     this.navCtrl.parent.select(1);
 
+  }//swipeLeft
 
-  }
-  ionViewDidEnter() {
-
-  }
-  sd() {
-
-  }
-}
+}//LocalWeatherPage

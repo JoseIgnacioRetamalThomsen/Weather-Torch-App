@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
 /*
-  Transfor temperature from kelvin to celcius or fahrenheit
-
-  Jose Retamal
+ * Transfor temperature from kelvin to celcius or fahrenheit
+ *
+ * Jose Retamal
 */
 
 @Injectable()
 export class ConvertTemperatureProvider {
 
   //"C" or "k"
-  tempType:string;
+  tempType: string;
 
   //conversion rate
   toCelsius = 273.15;
@@ -21,13 +21,13 @@ export class ConvertTemperatureProvider {
     //read tempType from storage
     this.storage.get("tempType").then((data) => {
 
-        this.tempType = data;
+      this.tempType = data;
 
-      }).catch((err) => {
+    }).catch((err) => {
 
-         console.log("erros");
+      console.log("erros");
 
-        });
+    });
 
   }//constructor
 
@@ -39,22 +39,21 @@ export class ConvertTemperatureProvider {
     //read temp type from storage
     this.storage.get("tempType").then((data) => {
 
-        this.tempType = data;
+      this.tempType = data;
 
-      }).catch((err) => {
-        
-        console.log("erros");
-      
-      });
+    }).catch((err) => {
 
+      console.log("erros");
+
+    });
 
     //tranfor from kelvi to value in the storage and return the result
-    if (this.tempType == "C") 
+    if (this.tempType == "C")
       return Math.round(temp - this.toCelsius);
-     else
-      if (this.tempType == "F") 
+    else
+      if (this.tempType == "F")
         return Math.round((temp - this.toCelsius) * 1.8 + 32);
-      
+
 
   }//convertTemperature
 
@@ -62,28 +61,26 @@ export class ConvertTemperatureProvider {
   convertTemperatureNew(temp: number, tempType: string): number {
 
     //calculete temperature in C or F and return the value
-    if (tempType == "C") 
-            return Math.round(temp - this.toCelsius);
-     else
-      if (tempType == "F") 
+    if (tempType == "C")
+      return Math.round(temp - this.toCelsius);
+    else
+      if (tempType == "F")
         return Math.round((temp - this.toCelsius) * 1.8 + 32);
-      
 
   }//convertTemperature
-
 
   //return tempType from storage
   getTempType(): string {
 
     this.storage.get("tempType").then((data) => {
 
-        this.tempType = data;
+      this.tempType = data;
 
-      }).catch((err) => {
-        
-        console.log("erros");
-      
-      });
+    }).catch((err) => {
+
+      console.log("erros");
+
+    });
 
     return this.tempType;
 
