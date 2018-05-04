@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { Events } from 'ionic-angular';
 
@@ -23,7 +23,7 @@ export class SettingsPage {
   //hold type of temperature "C" or "F"
   tempType;
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, private storage: Storage, private events: Events) { }
+  constructor( private storage: Storage, private events: Events) { }
  
 
   radioButtonClicked() {

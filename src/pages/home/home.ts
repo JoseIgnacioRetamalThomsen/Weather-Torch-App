@@ -2,10 +2,9 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Platform } from 'ionic-angular';
 import { Flashlight } from '@ionic-native/flashlight';
-import { LocalWeatherPage } from '../local-weather/local-weather';
 
 /*
- * Homa page, flashlight hapens here 
+ * Home page, flashlight hapens here 
  *
  * Jose Retamal
 */

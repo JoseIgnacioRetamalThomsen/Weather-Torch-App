@@ -4,9 +4,9 @@ import { HourWeatherCardComponent } from './hour-weather-card/hour-weather-card'
 import { DayWeatherCardComponent } from './day-weather-card/day-weather-card';
 @NgModule({
 	declarations: [HourWeatherCardComponent,
-    DayWeatherCardComponent],//CentralWeatherCardComponent],
+      DayWeatherCardComponent,CentralWeatherCardComponent],
 	imports: [],
 	exports: [HourWeatherCardComponent,
-    DayWeatherCardComponent],//CentralWeatherCardComponent]
+    DayWeatherCardComponent,CentralWeatherCardComponent]
 })
 export class ComponentsModule {}

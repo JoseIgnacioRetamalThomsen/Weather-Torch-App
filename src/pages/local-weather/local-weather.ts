@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController} from 'ionic-angular';
-import 'rxjs/add/operator/map';
 import { DayWeatherProvider } from '../../providers/day-weather/day-weather';
 import { Geolocation } from '@ionic-native/geolocation';
 

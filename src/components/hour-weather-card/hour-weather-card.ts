@@ -1,4 +1,4 @@
-import { Component, Input, EventEmitter } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { ConvertTemperatureProvider } from '../../providers/convert-temperature/convert-temperature'
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
